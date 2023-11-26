@@ -28,7 +28,7 @@ const AdCopyGenerator = () => {
       prompt: `Generate compelling ad copy for a product: ${productName} with this description ${productDescription}`,
       max_tokens: 150,
     });
-    const adCopy = response.choices[0].text.trim
+    const adCopy = response.choices[0].text.trim()
     setGeneratedCopy(adCopy);
     setLoading(false);
     setProductDescription('')
