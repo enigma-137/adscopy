@@ -8,7 +8,7 @@ import { CopyIcon } from 'lucide-react';
 
 // New way of creating openAI config
 const openai = new OpenAI({
-  apiKey: "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",
+  apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
   dangerouslyAllowBrowser: true,
 });
 
@@ -31,8 +31,9 @@ const AdCopyGenerator = () => {
     const adCopy = response.choices[0].text
     setGeneratedCopy(adCopy);
     setLoading(false);
-    setProductDescription('')
-    setProductName('')
+    // setProductDescription('')
+    // setProductName('')
+    console.log(adCopy)
   };
 
   return (
@@ -66,10 +67,11 @@ const AdCopyGenerator = () => {
           onClick={generateAdCopy}
           className="bg-purple-500 text-white py-2 px-4 rounded-md mr-2 hover:bg-purple-600 focus:outline-none focus:shadow-outline-purple"
         >
-          {loading ? 'Generating...' : 'Generate'}
+          {(loading && generatedCopy.length < 1) ? 'Generating...' : generatedCopy.length > 1 ? 'Regenerate' : 'Generate' }
+          
         </button>
 
-        {generatedCopy && (
+        {(generatedCopy && !loading) && (
 
           <div className='mt-4'>
             <div className="mt-4 rounded-md bg-slate-100 border p-3 flex">
