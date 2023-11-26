@@ -6,9 +6,9 @@ import OpenAI from 'openai';
 import { CopyIcon } from 'lucide-react';
 
 
-// New of creating openAI config
+// New way of creating openAI config
 const openai = new OpenAI({
-  apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
+  apiKey: "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",
   dangerouslyAllowBrowser: true,
 });
 
